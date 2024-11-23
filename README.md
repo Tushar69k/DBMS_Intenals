@@ -1,7 +1,7 @@
 # DBMS_Intenals
 Answers of Internal exams
 
-                 #IInd Internal
+                 IInd Internal
 
 Q.) Diff. b/w Delete and Truncate.
 Ans.)
@@ -66,3 +66,68 @@ ___
                   Ist Internal
 
 ___ 
+
+Q.) Single Valued Vs Multivalued Attributes.
+Ans.) 
+
+| **Aspect**                | **Single-Valued Attribute**                                     | **Multi-Valued Attribute**                                     |
+|---------------------------|---------------------------------------------------------------|---------------------------------------------------------------|
+| **Definition**            | Holds only one value for a specific entity instance.           | Holds multiple values for a specific entity instance.         |
+| **Example**               | Phone number of a person (if only one number is allowed).      | Phone numbers of a person (if multiple numbers are allowed).  |
+| **Cardinality**           | Fixed to 1.                                                   | Can have 0, 1, or more values.                                |
+| **Storage**               | Typically stored as a single field in a database table.        | May require a separate table or a delimited list to store values. |
+| **Complexity**            | Simple to implement and manage.                               | More complex as it requires additional handling for multiple values. |
+| **Normalization**         | Does not require normalization.                               | Often requires normalization to store values in a separate table. |
+| **Use Case**              | Used when only one value is logically or practically possible. | Used when multiple values are logically or practically needed. |
+| **Real-World Example**    | Date of birth, Social Security Number (SSN).                  | Email addresses, hobbies, phone numbers.                     |
+| **Database Design**       | Single column in the entity's table.                          | Often implemented with a relationship table to store multiple values. |
+| **Constraints**           | Enforces uniqueness or limits to one value.                  | Can involve constraints to ensure no duplicate values per entity. |
+
+### Example in Database:
+
+**Single-Valued Attribute Example:**
+```sql
+CREATE TABLE Employee (
+    EmployeeID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    DateOfBirth DATE
+);
+```
+
+**Multi-Valued Attribute Example:**
+```sql
+CREATE TABLE Employee (
+    EmployeeID INT PRIMARY KEY,
+    Name VARCHAR(50)
+);
+
+CREATE TABLE EmployeePhoneNumbers (
+    EmployeeID INT,
+    PhoneNumber VARCHAR(15),
+    FOREIGN KEY (EmployeeID) REFERENCES Employee(EmployeeID)
+);
+``` 
+
+### Summary:
+- Use **single-valued attributes** for fields where only one value logically applies.
+- Use **multi-valued attributes** when multiple values are required, ensuring proper database design practices to manage them.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
