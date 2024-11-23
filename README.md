@@ -1,7 +1,7 @@
 # DBMS_Intenals
 Answers of Internal exams
 
-                 #**IInd Internal**
+                 # **IInd Internal**
 
 Q.) Diff. b/w Delete and Truncate.
 Ans.)
