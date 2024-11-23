@@ -1,6 +1,10 @@
 # DBMS_Intenals
 Answers of Internal exams
 
+                 IInd Internal 
+
+Q.) Diff. b/w Delete and Truncate.
+Ans.)
 | **Aspect**            | **`DELETE`**                                | **`TRUNCATE`**                            |
 |-----------------------|---------------------------------------------|-------------------------------------------|
 | **Command Type**      | DML (Data Manipulation Language)            | DDL (Data Definition Language)            |
@@ -56,3 +60,9 @@ CREATE TABLE employees (
 ```
 
 - `email` must be unique but can contain a `NULL` value.
+
+___
+
+                  Ist Internal
+
+___ 
