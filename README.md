@@ -113,7 +113,92 @@ CREATE TABLE EmployeePhoneNumbers (
 - Use **multi-valued attributes** when multiple values are required, ensuring proper database design practices to manage them.
 
 
+___
+___
+___
+### **1. Explain with Example:**
 
+#### **a. Single-valued vs Multivalued Attribute**
+- **Single-valued Attribute**: This attribute holds a single value for each entity.
+  - **Example**: An employee's Social Security Number (SSN) is a single-valued attribute because it has only one value per employee.
+    - `SSN: 123-45-6789`
+
+- **Multivalued Attribute**: This attribute can hold multiple values for each entity.
+  - **Example**: An employee's phone numbers are multivalued attributes because an employee can have more than one phone number.
+    - `Phone Numbers: {123-456-7890, 098-765-4321}`
+
+#### **b. Representation Data Model**
+- **Representation Data Model**: A representation data model is used to describe the structure of a database. It includes data types, relationships, and constraints.
+  - **Example**: An Entity-Relationship (ER) model represents data using entities, attributes, and relationships.
+    - Entities: Employee, Department
+    - Attributes: Employee (ID, Name, SSN), Department (ID, Name)
+    - Relationships: Employee works in Department
+
+#### **c. Total and Partial Participation**
+- **Total Participation**: Every instance of the entity is involved in the relationship.
+  - **Example**: In a university database, every student must be enrolled in at least one course. Thus, student participation in the "enrolls in" relationship is total.
+  
+- **Partial Participation**: Some instances of the entity are involved in the relationship, but not all.
+  - **Example**: Not every employee manages a department. Thus, employee participation in the "manages" relationship is partial.
+
+### **2. Types of Database Users and Their Activities**
+
+#### **a. Database Administrator (DBA)**
+- **Activities**: 
+  - Managing database security
+  - Backing up and restoring databases
+  - Tuning database performance
+  - Creating and managing database users
+
+#### **b. Database Designer**
+- **Activities**:
+  - Designing the database schema
+  - Defining tables, relationships, and constraints
+  - Ensuring the database design supports application requirements
+
+#### **c. End Users**
+- **Activities**:
+  - Running queries to retrieve data
+  - Entering and updating data in the database
+  - Generating reports based on the data
+
+### **SQL Queries for the Given Schema**
+
+#### **i. Create a table Catalog with Composite Primary Key and Cost Constraint**
+```sql
+CREATE TABLE Catalog (
+    sid INT,
+    pid INT,
+    cost DECIMAL(10, 2) CHECK (cost > 500),
+    PRIMARY KEY (sid, pid)
+);
+```
+
+#### **ii. List all suppliers who have 's' as the second letter of their name**
+```sql
+SELECT * FROM Suppliers
+WHERE sname LIKE '_s%';
+```
+
+#### **iii. Print the name of all suppliers whose turnover is greater than 50000 and live in Mumbai**
+```sql
+SELECT sname FROM Suppliers
+WHERE turnover > 50000 AND city = 'Mumbai';
+```
+
+#### **iv. Increase the cost of all products in catalog by 10%**
+```sql
+UPDATE Catalog
+SET cost = cost * 1.10;
+```
+
+#### **v. Delete all the products of blue color from product table**
+```sql
+DELETE FROM Parts
+WHERE color = 'blue';
+```
+
+These queries cover the operations you need to perform on the database schema given.
 
 
 
