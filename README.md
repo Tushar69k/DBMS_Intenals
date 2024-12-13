@@ -3,7 +3,7 @@ Answers of Internal exams
 
                  IInd Internal
 
-Q.) Diff. b/w Delete and Truncate.
+Q.) Diff. b/w Delete and Truncate. kk
 Ans.)
 | **Aspect**            | **`DELETE`**                                | **`TRUNCATE`**                            |
 |-----------------------|---------------------------------------------|-------------------------------------------|
