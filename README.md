@@ -721,3 +721,1064 @@ Would you like a practice exercise? 😊
 
 --------------------------------
 
+# **Shell in Unix – Simple and Easy Explanation**  
+
+A **shell** in Unix is a **command-line interface** that allows users to **interact with the operating system**. It acts as a **middleman** between the user and the computer.  
+
+### **Example:**  
+When you type a command like:  
+```bash
+ls
+```
+The **shell** takes this command, processes it, and shows the result.  
+
+---
+
+## **1. What is a Shell?**  
+A **shell** is a **program** that takes user commands, **sends them to the operating system**, and displays the output. It allows users to:  
+✅ **Run programs** (like opening files or running scripts)  
+✅ **Manage files** (copy, delete, rename)  
+✅ **Control processes** (start, stop, background processes)  
+✅ **Write scripts** (automate tasks)  
+
+---
+
+## **2. How Does a Shell Work?**  
+1. **User types a command** (e.g., `ls`)  
+2. **Shell reads the command**  
+3. **Shell sends the command to the operating system**  
+4. **Operating system executes the command**  
+5. **Shell displays the result**  
+
+👉 **Example:**  
+```bash
+mkdir myfolder
+```
+- The shell tells the OS to create a folder named **myfolder**.  
+- If successful, it returns to the command prompt.  
+
+---
+
+## **3. Types of Shells in Unix**  
+
+Unix has different types of shells. The most common ones are:  
+
+| Shell Name | Command to Use | Features |
+|------------|--------------|----------|
+| **Bourne Shell (sh)** | `sh` | Basic shell, fast and simple |
+| **Bash (Bourne Again Shell)** | `bash` | Most common, improved version of sh |
+| **C Shell (csh)** | `csh` | Uses C-like syntax, good for programmers |
+| **Korn Shell (ksh)** | `ksh` | Faster and more powerful than sh |
+| **Z Shell (zsh)** | `zsh` | Has extra features like auto-completion |
+
+### **Which Shell Am I Using?**  
+To check your current shell, type:  
+```bash
+echo $SHELL
+```
+It will show something like:  
+```
+/bin/bash
+```
+This means you are using the **Bash shell**.  
+
+---
+
+## **4. Basic Shell Commands**  
+
+### **File and Directory Commands**  
+| Command | Description |
+|---------|------------|
+| `pwd` | Show current directory |
+| `ls` | List files and folders |
+| `cd foldername` | Change directory |
+| `mkdir foldername` | Create a folder |
+| `rm filename` | Delete a file |
+| `rmdir foldername` | Delete an empty folder |
+| `rm -r foldername` | Delete a folder with files inside |
+
+### **File Handling Commands**  
+| Command | Description |
+|---------|------------|
+| `touch filename` | Create an empty file |
+| `cat filename` | Show file contents |
+| `cp file1 file2` | Copy file1 to file2 |
+| `mv file1 file2` | Rename or move a file |
+| `rm filename` | Delete a file |
+
+### **Process Management**  
+| Command | Description |
+|---------|------------|
+| `ps` | Show running processes |
+| `kill PID` | Stop a process (use `ps` to find the PID) |
+| `top` | Show system resource usage |
+
+### **Other Useful Commands**  
+| Command | Description |
+|---------|------------|
+| `echo "Hello"` | Print text to screen |
+| `whoami` | Show the current user |
+| `date` | Show the current date/time |
+| `cal` | Show calendar |
+
+---
+
+## **5. Shell Scripting (Automating Tasks)**  
+A **shell script** is a file that contains a series of commands that run automatically.
+
+### **Example Shell Script**  
+
+1. Create a script file:  
+```bash
+vi myscript.sh
+```
+2. Write the script:  
+```bash
+#!/bin/bash
+echo "Hello, this is my first shell script!"
+```
+3. Save and exit (`Esc`, then `:wq`)  
+4. Give execution permission:  
+```bash
+chmod +x myscript.sh
+```
+5. Run the script:  
+```bash
+./myscript.sh
+```
+**Output:**  
+```
+Hello, this is my first shell script!
+```
+
+---
+
+## **6. Shell Variables**  
+A **variable** stores data that can be used later.
+
+### **Example:**
+```bash
+name="John"
+echo "Hello, $name"
+```
+**Output:**  
+```
+Hello, John
+```
+
+### **Types of Variables:**
+- **System Variables** (predefined, like `$HOME`, `$PATH`)  
+- **User Variables** (created by the user, like `name="John"`)  
+
+---
+
+## **7. Shell Operators**  
+| Operator | Description | Example |
+|----------|------------|---------|
+| `>` | Redirect output to a file | `ls > files.txt` |
+| `>>` | Append output to a file | `echo "New line" >> files.txt` |
+| `|` | Pipe output to another command | `ls | grep .txt` |
+| `&&` | Run multiple commands (only if the first succeeds) | `mkdir test && cd test` |
+| `||` | Run the next command only if the first fails | `cd test || echo "Folder not found"` |
+
+---
+
+## **8. Shell Programming – Conditional Statements**  
+
+### **If Condition Example:**
+```bash
+#!/bin/bash
+echo "Enter a number:"
+read num
+
+if [ $num -gt 10 ]; then
+  echo "Number is greater than 10"
+else
+  echo "Number is 10 or less"
+fi
+```
+
+---
+
+## **9. Shell Loops**  
+Loops help run a command multiple times.
+
+### **For Loop Example:**
+```bash
+for i in 1 2 3 4 5
+do
+  echo "Number: $i"
+done
+```
+
+### **While Loop Example:**
+```bash
+count=1
+while [ $count -le 5 ]
+do
+  echo "Count is: $count"
+  count=$((count + 1))
+done
+```
+
+---
+
+## **10. Summary of Shell Features**  
+
+| Feature | Description |
+|---------|------------|
+| **Command Execution** | Runs Unix commands |
+| **File Management** | Create, move, delete files |
+| **Process Control** | Start, stop, and monitor processes |
+| **Shell Scripting** | Automate tasks using scripts |
+| **Variables** | Store and use data |
+| **Loops & Conditions** | Control flow in scripts |
+
+---
+
+## **11. Conclusion**
+- The **shell** is an important part of Unix/Linux that allows users to interact with the OS.  
+- It supports **commands, scripting, automation, and process management**.  
+- Learning **basic shell commands** makes it easier to work efficiently.  
+- **Shell scripting** helps automate repetitive tasks.  
+
+✅ Command Execution – Runs Unix commands
+✅ File and Directory Management – Allows creating, deleting, and modifying files
+✅ Process Management – Controls background and foreground tasks
+✅ Redirection and Pipes – Sends command output to files or other commands
+✅ Shell Scripting – Automates tasks using scripts
+✅ User Customization – Allows changing settings with .bashrc or .bash_profile
+
+
+-----
+
+
+# **File Attributes in Unix – Simple and Easy Explanation**  
+
+In Unix, **files have attributes** that define **who can access them, what actions can be performed, and other details**. These attributes include:  
+✅ **File Permissions** (Who can read, write, or execute)  
+✅ **File Ownership** (Who owns the file)  
+✅ **File Timestamps** (When it was created or modified)  
+✅ **File Type** (Regular file, directory, symbolic link, etc.)  
+✅ **File Size** (How much space it takes)  
+
+Let’s go step by step!  
+
+---
+
+## **1. Viewing File Attributes**  
+To see the attributes of a file, use:  
+```bash
+ls -l filename
+```
+or to check multiple files in a directory:  
+```bash
+ls -l
+```
+
+### **Example Output:**  
+```bash
+-rw-r--r--  1 user group  1234 Mar 30 10:15 myfile.txt
+```
+This tells us:  
+- **File Permissions**: `-rw-r--r--`  
+- **Number of Links**: `1`  
+- **Owner**: `user`  
+- **Group**: `group`  
+- **File Size**: `1234` bytes  
+- **Last Modified Date**: `Mar 30 10:15`  
+- **File Name**: `myfile.txt`  
+
+---
+
+## **2. File Permissions**  
+
+Each file has **three types of permissions**:  
+1. **Read (`r`)** – Can view the file contents  
+2. **Write (`w`)** – Can modify or delete the file  
+3. **Execute (`x`)** – Can run the file as a program  
+
+These permissions are set for three categories:  
+| Symbol | User Type | Meaning |
+|--------|----------|---------|
+| `u` | **User** (Owner) | Person who created the file |
+| `g` | **Group** | People in the same user group |
+| `o` | **Others** | Everyone else |
+
+### **Example of File Permissions**
+```bash
+-rwxr-xr--
+```
+| User Type | Permission | Meaning |
+|-----------|------------|---------|
+| `rwx` | Owner | Read, write, and execute |
+| `r-x` | Group | Read and execute |
+| `r--` | Others | Only read |
+
+---
+
+## **3. Changing File Permissions (`chmod`)**  
+
+To change file permissions, use:  
+```bash
+chmod permissions filename
+```
+### **Example: Giving Full Permission to Owner**
+```bash
+chmod u+rwx myfile.txt
+```
+Now the owner can **read, write, and execute** the file.
+
+### **Example: Removing Write Permission from Group**
+```bash
+chmod g-w myfile.txt
+```
+Now, the group **cannot** modify the file.
+
+### **Shortcut: Using Numbers**  
+Each permission has a number:  
+- **Read (`r`) = 4**  
+- **Write (`w`) = 2**  
+- **Execute (`x`) = 1**  
+
+To set permissions directly:  
+```bash
+chmod 755 myfile.txt
+```
+**Breakdown of `755`:**  
+- **7 (Owner):** `rwx` → (4+2+1)  
+- **5 (Group):** `r-x` → (4+0+1)  
+- **5 (Others):** `r-x` → (4+0+1)  
+
+Now, the file is **readable and executable by everyone but only writable by the owner**.
+
+---
+
+## **4. File Ownership**  
+
+Each file has an **owner** and a **group**.  
+
+### **Changing File Owner (`chown`)**
+To change the file owner:  
+```bash
+chown newuser myfile.txt
+```
+Now, **newuser** is the owner.
+
+To change both the owner and group:  
+```bash
+chown newuser:newgroup myfile.txt
+```
+
+### **Changing File Group (`chgrp`)**
+To change only the group:  
+```bash
+chgrp newgroup myfile.txt
+```
+
+---
+
+## **5. File Timestamps (Last Modified, Accessed, Changed)**  
+
+Each file has three timestamps:  
+
+| Timestamp | Description | Command to View |
+|-----------|-------------|---------------|
+| **Modified Time (`mtime`)** | Last time the file was edited | `ls -lt` |
+| **Access Time (`atime`)** | Last time the file was opened | `ls -lu` |
+| **Change Time (`ctime`)** | Last time file permissions/owner changed | `ls -lc` |
+
+### **Example: Viewing Last Modified Time**
+```bash
+ls -lt myfile.txt
+```
+
+### **Updating the Timestamp (`touch`)**  
+To **update the modified time**, use:  
+```bash
+touch myfile.txt
+```
+
+---
+
+## **6. File Types in Unix**  
+
+Not all files are regular files! Use `ls -l` to check file types.
+
+| Symbol | File Type | Example |
+|--------|----------|---------|
+| `-` | Regular File | `-rw-r--r-- myfile.txt` |
+| `d` | Directory | `drwxr-xr-x myfolder` |
+| `l` | Symbolic Link | `lrwxrwxrwx mylink -> /home/user/file` |
+| `c` | Character Device | `crw-rw---- tty1` (Used for terminals) |
+| `b` | Block Device | `brw-rw---- sda1` (Used for hard drives) |
+
+### **Checking File Type (`file` command)**
+```bash
+file myfile.txt
+```
+Example Output:  
+```
+myfile.txt: ASCII text
+```
+
+---
+
+## **7. File Size and Disk Usage**  
+
+To check file size, use:  
+```bash
+ls -lh myfile.txt
+```
+This shows the size in **human-readable format** (KB, MB, GB).  
+
+To check disk usage of a file or folder:  
+```bash
+du -sh myfile.txt
+```
+
+---
+
+## **8. Hidden Files in Unix**  
+
+A file that starts with `.` is **hidden**.  
+To list hidden files, use:  
+```bash
+ls -la
+```
+
+To create a hidden file:  
+```bash
+touch .hiddenfile
+```
+
+To remove a hidden file:  
+```bash
+rm .hiddenfile
+```
+
+---
+
+## **9. Special File Permissions (Sticky Bit, SUID, SGID)**  
+
+### **Sticky Bit (`t`)** – Protects files in a shared folder  
+- If set, only the **owner** can delete files in a folder.  
+- Useful for **/tmp** directory.
+
+**Set Sticky Bit:**
+```bash
+chmod +t foldername
+```
+**Check:**
+```bash
+ls -ld foldername
+```
+Output:  
+```
+drwxrwxrwt 7 user group 4096 Apr 3 10:00 foldername
+```
+(`t` at the end means the sticky bit is set.)
+
+---
+
+### **SUID (`s`) – Allows a program to run as the file owner**
+Example: `passwd` command needs to update system files, so it has SUID.  
+
+**Set SUID:**
+```bash
+chmod u+s filename
+```
+
+---
+
+### **SGID (`s`) – New files inherit group ownership**
+Used for shared project folders.  
+
+**Set SGID:**
+```bash
+chmod g+s foldername
+```
+
+---
+
+## **10. Summary of Unix File Attributes**  
+
+| Attribute | Description |
+|-----------|-------------|
+| **Permissions** | Defines who can read, write, execute |
+| **Ownership** | Defines the file owner and group |
+| **Timestamps** | Shows when a file was modified, accessed, or changed |
+| **File Type** | Regular file, directory, symbolic link, etc. |
+| **File Size** | Displays size in bytes, KB, MB, GB |
+| **Hidden Files** | Files starting with `.` are hidden |
+| **Sticky Bit** | Prevents users from deleting others' files in shared directories |
+| **SUID/SGID** | Allows files to run as owner or inherit group permissions |
+
+---
+
+## **Conclusion**  
+
+- Unix files have **attributes** like **permissions, ownership, timestamps, size, and type**.  
+- Use `ls -l` to check file details.  
+- Change **permissions** with `chmod`, **owner** with `chown`, and **group** with `chgrp`.  
+- Use **special permissions** like **Sticky Bit, SUID, and SGID** for extra security.
+
+----
+
+# **Filters in Unix – Simple and Easy Explanation**  
+
+## **What are Filters in Unix?**  
+Filters are **special programs** that **take input, process it, and give output**.  
+They are mostly used with **pipes (`|`)** to connect multiple commands.  
+
+### **Example of a Filter:**  
+```bash
+cat file.txt | grep "hello"
+```
+🔹 `cat file.txt` → Reads the file  
+🔹 `grep "hello"` → Finds lines containing "hello"  
+🔹 `|` (pipe) → Sends `cat` output to `grep`  
+
+### **Why Use Filters?**  
+✅ Helps **process and modify data**  
+✅ **Removes unnecessary data**  
+✅ **Formats and sorts information**  
+✅ Works well with **large text files**  
+
+---
+
+## **1. Common Unix Filters**
+| **Filter Command** | **Use** |
+|------------------|--------|
+| `cat` | Displays file content |
+| `head` | Shows the first few lines of a file |
+| `tail` | Shows the last few lines of a file |
+| `wc` | Counts lines, words, and characters |
+| `sort` | Sorts lines alphabetically or numerically |
+| `uniq` | Removes duplicate lines |
+| `grep` | Searches for specific words or patterns |
+| `cut` | Extracts specific columns from a file |
+| `awk` | Advanced text processing |
+| `sed` | Edits text in a file |
+
+---
+
+## **2. Basic Filters with Examples**  
+
+### **1️⃣ `cat` – Show File Contents**  
+Displays the content of a file.  
+```bash
+cat myfile.txt
+```
+
+👉 **Combine with pipes:**  
+```bash
+cat myfile.txt | grep "error"
+```
+🔹 Finds lines with "error" in `myfile.txt`.
+
+---
+
+### **2️⃣ `head` – Show First Few Lines**  
+Shows the **first 10 lines** by default.  
+```bash
+head myfile.txt
+```
+👉 Show first 5 lines:  
+```bash
+head -5 myfile.txt
+```
+
+---
+
+### **3️⃣ `tail` – Show Last Few Lines**  
+Shows the **last 10 lines** by default.  
+```bash
+tail myfile.txt
+```
+👉 Show last 5 lines:  
+```bash
+tail -5 myfile.txt
+```
+👉 Show **real-time updates** (useful for logs):  
+```bash
+tail -f log.txt
+```
+
+---
+
+### **4️⃣ `wc` – Count Lines, Words, Characters**  
+```bash
+wc myfile.txt
+```
+👉 **Example Output:**  
+```
+10  50  200 myfile.txt
+```
+🔹 **10** → Number of lines  
+🔹 **50** → Number of words  
+🔹 **200** → Number of characters  
+
+👉 Count **only lines:**  
+```bash
+wc -l myfile.txt
+```
+👉 Count **only words:**  
+```bash
+wc -w myfile.txt
+```
+👉 Count **only characters:**  
+```bash
+wc -c myfile.txt
+```
+
+---
+
+### **5️⃣ `sort` – Arrange Lines in Order**  
+Sorts alphabetically by default.  
+```bash
+sort names.txt
+```
+👉 **Sort numbers properly:**  
+```bash
+sort -n numbers.txt
+```
+👉 **Sort in reverse order:**  
+```bash
+sort -r names.txt
+```
+
+---
+
+### **6️⃣ `uniq` – Remove Duplicate Lines**  
+```bash
+uniq names.txt
+```
+👉 **Remove duplicates while ignoring case:**  
+```bash
+sort names.txt | uniq -i
+```
+
+---
+
+### **7️⃣ `grep` – Search for Text**  
+Finds lines containing "hello".  
+```bash
+grep "hello" myfile.txt
+```
+👉 **Ignore case:**  
+```bash
+grep -i "hello" myfile.txt
+```
+👉 **Show only matching word count:**  
+```bash
+grep -c "hello" myfile.txt
+```
+👉 **Find lines that DO NOT contain "error":**  
+```bash
+grep -v "error" myfile.txt
+```
+
+---
+
+### **8️⃣ `cut` – Extract Columns of Text**  
+👉 **Example file (`students.txt`)**  
+```
+John  25  Male
+Sarah  22  Female
+David  30  Male
+```
+👉 **Extract only names (1st column):**  
+```bash
+cut -d' ' -f1 students.txt
+```
+🔹 `-d' '` → Uses space as a separator  
+🔹 `-f1` → Selects **first** column  
+
+👉 **Extract 2nd column (age):**  
+```bash
+cut -d' ' -f2 students.txt
+```
+
+---
+
+### **9️⃣ `awk` – Advanced Text Processing**  
+Prints the **2nd column** from `students.txt`:  
+```bash
+awk '{print $2}' students.txt
+```
+👉 **Find students older than 25:**  
+```bash
+awk '$2 > 25' students.txt
+```
+
+---
+
+### **🔟 `sed` – Find and Replace Text**  
+Replaces "error" with "warning" in `log.txt`.  
+```bash
+sed 's/error/warning/g' log.txt
+```
+
+---
+
+## **3. Combining Filters Using Pipes (`|`)**  
+
+### **Example 1: Find and Count Matching Lines**
+```bash
+grep "error" logfile.txt | wc -l
+```
+🔹 Finds lines with "error" and **counts** them.  
+
+---
+
+### **Example 2: Sort and Remove Duplicates**
+```bash
+sort names.txt | uniq
+```
+🔹 Sorts the list before removing duplicates.  
+
+---
+
+### **Example 3: Extract Specific Column and Sort**
+```bash
+cut -d' ' -f1 students.txt | sort
+```
+🔹 Extracts names and sorts them.  
+
+---
+
+## **4. Summary Table – Unix Filters**
+| **Filter** | **Use** |
+|-----------|---------|
+| `cat` | Display file content |
+| `head` | Show first few lines |
+| `tail` | Show last few lines |
+| `wc` | Count words, lines, characters |
+| `sort` | Sort lines alphabetically/numerically |
+| `uniq` | Remove duplicate lines |
+| `grep` | Search for a pattern in a file |
+| `cut` | Extract specific columns |
+| `awk` | Advanced text filtering |
+| `sed` | Find and replace text |
+
+---
+
+## **5. Conclusion**  
+- **Filters** process and modify data in Unix.  
+- **Pipes (`|`)** connect multiple filters.  
+- **Common filters:** `grep`, `sort`, `uniq`, `cut`, `awk`, `sed`.  
+- Used for **text processing, searching, and formatting**.  
+
+
+# **Filters in Unix – Detailed Explanation in Simple Easy English**  
+
+## **What is a Filter in Unix?**  
+A **filter** in Unix is a special program that **takes input, processes it, and produces output**.  
+- Filters **remove unwanted data** and **modify content**.  
+- They work with **text files** and **commands**.  
+- Most filters are used with **pipes (`|`)** to combine multiple commands.  
+
+### **Example of a Filter in Action**  
+```bash
+cat file.txt | grep "error"
+```
+🔹 `cat file.txt` → Reads the file  
+🔹 `grep "error"` → Finds lines containing "error"  
+🔹 `|` (pipe) → Sends the output of `cat` to `grep`  
+
+👉 **Without Filters**: Data is raw and unprocessed.  
+👉 **With Filters**: Data is structured, formatted, and meaningful.  
+
+---
+
+## **Why Are Filters Important?**  
+✅ **Data Processing** – Helps extract and clean data  
+✅ **Efficiency** – Automates searching, sorting, and formatting  
+✅ **Works with Large Files** – Can process thousands of lines quickly  
+✅ **Easily Combined** – Can be used with other commands via pipes (`|`)  
+
+---
+
+## **Common Unix Filters**
+| **Filter Command** | **What It Does** |
+|-------------------|----------------|
+| `cat` | Displays file content |
+| `head` | Shows the first few lines of a file |
+| `tail` | Shows the last few lines of a file |
+| `wc` | Counts lines, words, and characters |
+| `sort` | Arranges lines alphabetically or numerically |
+| `uniq` | Removes duplicate lines |
+| `grep` | Searches for specific words or patterns |
+| `cut` | Extracts specific columns from a file |
+| `awk` | Advanced text processing |
+| `sed` | Finds and replaces text in a file |
+
+---
+
+## **1. `cat` – Display File Content**  
+The `cat` (concatenate) command **shows the content of a file**.  
+
+**Syntax:**  
+```bash
+cat filename
+```
+
+**Example:**  
+```bash
+cat myfile.txt
+```
+👉 Displays the content of `myfile.txt`.  
+
+📌 **Using `cat` with pipes**  
+```bash
+cat file.txt | grep "error"
+```
+🔹 Finds all lines with "error" in `file.txt`.
+
+---
+
+## **2. `head` – Show First Few Lines**  
+By default, `head` **displays the first 10 lines** of a file.  
+
+**Syntax:**  
+```bash
+head filename
+```
+
+**Example:**  
+```bash
+head myfile.txt
+```
+👉 Shows the first 10 lines of `myfile.txt`.  
+
+📌 **To show the first 5 lines**  
+```bash
+head -5 myfile.txt
+```
+
+---
+
+## **3. `tail` – Show Last Few Lines**  
+By default, `tail` **displays the last 10 lines** of a file.  
+
+**Syntax:**  
+```bash
+tail filename
+```
+
+**Example:**  
+```bash
+tail myfile.txt
+```
+👉 Shows the last 10 lines of `myfile.txt`.  
+
+📌 **To show the last 5 lines**  
+```bash
+tail -5 myfile.txt
+```
+
+📌 **Real-time file monitoring (useful for logs):**  
+```bash
+tail -f logfile.txt
+```
+🔹 Keeps updating as new lines are added to the log file.
+
+---
+
+## **4. `wc` – Word, Line, and Character Count**  
+`wc` (word count) **counts the number of lines, words, and characters** in a file.  
+
+**Syntax:**  
+```bash
+wc filename
+```
+
+**Example:**  
+```bash
+wc myfile.txt
+```
+**Output:**  
+```
+10  50  200 myfile.txt
+```
+🔹 **10** → Number of lines  
+🔹 **50** → Number of words  
+🔹 **200** → Number of characters  
+
+📌 **Count only lines:**  
+```bash
+wc -l myfile.txt
+```
+📌 **Count only words:**  
+```bash
+wc -w myfile.txt
+```
+📌 **Count only characters:**  
+```bash
+wc -c myfile.txt
+```
+
+---
+
+## **5. `sort` – Arrange Lines in Order**  
+The `sort` command **arranges lines alphabetically or numerically**.  
+
+**Syntax:**  
+```bash
+sort filename
+```
+
+**Example:**  
+```bash
+sort names.txt
+```
+🔹 Sorts names in **alphabetical order**.  
+
+📌 **Sort numbers properly:**  
+```bash
+sort -n numbers.txt
+```
+📌 **Sort in reverse order:**  
+```bash
+sort -r names.txt
+```
+
+---
+
+## **6. `uniq` – Remove Duplicate Lines**  
+The `uniq` command **removes duplicate lines** in a file.  
+
+**Syntax:**  
+```bash
+uniq filename
+```
+
+**Example:**  
+```bash
+uniq names.txt
+```
+🔹 Removes repeated names.  
+
+📌 **To ignore case sensitivity:**  
+```bash
+sort names.txt | uniq -i
+```
+🔹 Sorts and removes duplicates, ignoring uppercase/lowercase.
+
+---
+
+## **7. `grep` – Search for Specific Text**  
+The `grep` command **searches for a word or pattern in a file**.  
+
+**Syntax:**  
+```bash
+grep "pattern" filename
+```
+
+**Example:**  
+```bash
+grep "error" logfile.txt
+```
+🔹 Shows all lines containing "error".  
+
+📌 **Ignore case sensitivity:**  
+```bash
+grep -i "error" logfile.txt
+```
+
+📌 **Count occurrences of a word:**  
+```bash
+grep -c "error" logfile.txt
+```
+
+📌 **Show lines that do NOT contain "error":**  
+```bash
+grep -v "error" logfile.txt
+```
+
+---
+
+## **8. `cut` – Extract Specific Columns from a File**  
+The `cut` command **extracts parts of a file based on columns or delimiters**.  
+
+**Syntax:**  
+```bash
+cut -d'delimiter' -fcolumn filename
+```
+
+**Example File (`students.txt`)**  
+```
+John  25  Male
+Sarah  22  Female
+David  30  Male
+```
+
+📌 **Extract the first column (names):**  
+```bash
+cut -d' ' -f1 students.txt
+```
+📌 **Extract the second column (ages):**  
+```bash
+cut -d' ' -f2 students.txt
+```
+
+---
+
+## **9. `awk` – Advanced Text Processing**  
+The `awk` command **manipulates text and extracts information from structured files**.  
+
+**Syntax:**  
+```bash
+awk '{print $column_number}' filename
+```
+
+📌 **Print second column (ages) from `students.txt`:**  
+```bash
+awk '{print $2}' students.txt
+```
+📌 **Find students older than 25:**  
+```bash
+awk '$2 > 25' students.txt
+```
+
+---
+
+## **10. `sed` – Find and Replace Text**  
+The `sed` (Stream Editor) command **modifies text in a file**.  
+
+**Syntax:**  
+```bash
+sed 's/old-text/new-text/g' filename
+```
+
+📌 **Replace "error" with "warning" in `logfile.txt`:**  
+```bash
+sed 's/error/warning/g' logfile.txt
+```
+
+---
+
+## **Combining Filters Using Pipes (`|`)**  
+
+📌 **Example 1: Find and Count Matching Lines**  
+```bash
+grep "error" logfile.txt | wc -l
+```
+🔹 Finds "error" and **counts** the occurrences.
+
+📌 **Example 2: Extract Column and Sort**  
+```bash
+cut -d' ' -f1 students.txt | sort
+```
+🔹 Extracts names and **sorts** them.
+
+---
+
+## **Conclusion**  
+- Unix **filters process and modify text**.  
+- **Pipes (`|`)** connect filters for powerful combinations.  
+- **Filters make data processing efficient and automated.**  
+
+
+
