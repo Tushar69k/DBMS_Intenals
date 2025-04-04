@@ -266,6 +266,13 @@ That’s how **data link protocols** help computers talk to each other! 💬💻
 
 
 
+---
+---
+---
+---
+--
+---
+---
 
 
 
@@ -412,5 +419,232 @@ CRC is a powerful **error detection** technique that works by treating data as a
 ### **Conclusion**  
 The **Data Link Layer** plays a crucial role in ensuring **reliable communication** through framing, error detection, error correction, and flow control techniques. Methods like **Hamming Code, CRC, and Bit Stuffing** ensure data integrity, while **sliding window protocols** enhance efficiency. Understanding these concepts is essential for building robust network systems.
 
+---
 
+
+
+
+
+
+
+
+---
+---
+---
+---
+--
+---
+---
+
+
+
+
+
+
+----
+
+
+Sure! Let’s go step by step and explain each **Data Link Protocol** in simple terms.  
+
+---
+
+# **Data Link Protocols**  
+**Data Link Protocols** define how data is transferred between two devices over a communication channel. They ensure **error detection, flow control, and reliable data transmission**.  
+
+---
+
+## **1. Stop & Wait Protocol**  
+The **Stop & Wait** protocol is one of the simplest flow control mechanisms.  
+
+### **How it Works?**  
+1. The sender **sends one frame**.  
+2. The sender **waits for an acknowledgment (ACK)** before sending the next frame.  
+3. If an acknowledgment is **not received** (due to an error), the sender **retransmits** the frame.  
+
+### **Example:**  
+- Sender: **"Sending Frame 1" → Waits for ACK**  
+- Receiver: **"ACK 1 received" → Sender sends next frame**  
+
+### **Advantages:**  
+✔ Simple and easy to implement.  
+✔ Ensures reliable transmission.  
+
+### **Disadvantages:**  
+❌ Slow, as only one frame is sent at a time.  
+❌ Wastes time waiting for ACK.  
+
+---
+
+## **2. Unrestricted Stop & Wait Protocol**  
+This is a **modified version** of the Stop & Wait protocol, where there is **no restriction** on how many frames can be sent before waiting for an acknowledgment.  
+
+### **How it Works?**  
+- The sender **keeps sending frames** without waiting for an acknowledgment.  
+- The receiver acknowledges **all received frames** at once.  
+
+### **Advantages:**  
+✔ Faster than basic Stop & Wait.  
+✔ Reduces idle time of the sender.  
+
+### **Disadvantages:**  
+❌ Risk of **data loss** if frames are not acknowledged properly.  
+
+---
+
+## **3. Simplex Stop & Wait Protocol**  
+This is a variation of Stop & Wait where **communication is one-way only (simplex mode)**.  
+
+### **Example:**  
+- A **weather station** sends temperature data to a server.  
+- The server acknowledges receipt, but **never sends data back** to the weather station.  
+
+### **Advantages:**  
+✔ Useful for **one-directional** communication.  
+✔ Simple and easy to implement.  
+
+### **Disadvantages:**  
+❌ Wastes time waiting for acknowledgments.  
+
+---
+
+## **4. Protocol for Noisy Channel**  
+When data is transmitted over a network, it **may get corrupted due to noise**. This protocol ensures data is **resent if errors are detected**.  
+
+### **How it Works?**  
+- If an error is detected, the receiver **sends a Negative Acknowledgment (NAK)**.  
+- The sender then **resends the frame**.  
+- Example: Used in **wireless communication** where noise is common.  
+
+### **Advantages:**  
+✔ Ensures **error-free communication**.  
+✔ Useful in **unreliable networks**.  
+
+### **Disadvantages:**  
+❌ Increases **network traffic** due to retransmissions.  
+
+---
+
+## **5. Sliding Window Protocol**  
+This is an **efficient** flow control mechanism that allows the sender to **send multiple frames before waiting for an acknowledgment**.  
+
+### **How it Works?**  
+1. The sender maintains a **window (buffer)** of frames that can be sent.  
+2. The receiver **acknowledges multiple frames** at once.  
+3. The sender moves the window forward as ACKs are received.  
+
+### **Advantages:**  
+✔ More efficient than Stop & Wait.  
+✔ Faster transmission.  
+
+### **Disadvantages:**  
+❌ More complex to implement.  
+
+---
+
+## **6. Go-Back-N Protocol**  
+A **type of Sliding Window Protocol** where:  
+- The sender can send multiple frames at once.  
+- If an error occurs, **ALL frames after the error must be retransmitted**.  
+
+### **Example:**  
+- Sender sends **Frames 1, 2, 3, 4, 5**.  
+- Frame 3 gets corrupted.  
+- Receiver discards **Frames 3, 4, and 5**.  
+- Sender **resends Frames 3, 4, and 5**.  
+
+### **Advantages:**  
+✔ Works well in high-speed networks.  
+
+### **Disadvantages:**  
+❌ **Wastes bandwidth** if many frames are retransmitted.  
+
+---
+
+## **7. Selective Repeat Protocol**  
+Another type of Sliding Window Protocol, but **only the erroneous frame is retransmitted**, not all frames after it.  
+
+### **Example:**  
+- Sender sends **Frames 1, 2, 3, 4, 5**.  
+- Frame 3 gets corrupted.  
+- Receiver **only requests Frame 3** to be resent, keeping Frames 4 and 5.  
+
+### **Advantages:**  
+✔ **Saves bandwidth** compared to Go-Back-N.  
+✔ More efficient in noisy networks.  
+
+### **Disadvantages:**  
+❌ **More complex to implement** than Go-Back-N.  
+
+---
+
+## **8. Verification using File State**  
+This technique ensures data **is not lost or duplicated** by tracking the **state of the file** during transmission.  
+
+### **How it Works?**  
+- The sender and receiver **keep track of data being transferred**.  
+- If a file is **partially received**, transmission resumes from the last correct state.  
+- Example: Used in **file downloads** (e.g., resuming a download).  
+
+---
+
+## **9. HDLC (High-Level Data Link Control) Protocol**  
+**HDLC** is a widely used data link protocol for **synchronous** data transmission.  
+
+### **Features of HDLC:**  
+✔ Uses **bit-oriented** framing (Bit Stuffing).  
+✔ Provides **error detection** and **flow control**.  
+✔ Supports different modes:  
+  - **Normal Response Mode (NRM)** → Used in mainframe networks.  
+  - **Asynchronous Balanced Mode (ABM)** → Used in modern networks.  
+
+### **Where is HDLC Used?**  
+✔ Used in **WAN (Wide Area Networks)** like leased lines and satellite links.  
+
+---
+
+## **10. ISDN (Integrated Services Digital Network)**  
+ISDN is a **circuit-switched network** system that allows **voice, video, and data** to be transmitted over the same line.  
+
+### **Types of ISDN Channels:**  
+- **B-Channel (Bearer Channel):** Transmits voice and data.  
+- **D-Channel (Delta Channel):** Used for signaling and control.  
+
+### **Advantages of ISDN:**  
+✔ Faster than traditional telephone networks.  
+✔ Supports **multiple connections** on a single line.  
+
+### **Disadvantages of ISDN:**  
+❌ Expensive to install.  
+❌ Being replaced by broadband technologies like **Fiber and DSL**.  
+
+---
+
+## **11. ATM (Asynchronous Transfer Mode)**  
+ATM is a **high-speed networking standard** designed for voice, video, and data transmission.  
+
+### **Key Features of ATM:**  
+✔ Uses **fixed-size packets (cells)** (53 bytes).  
+✔ Works on **both LAN and WAN**.  
+✔ Supports **real-time transmission** (e.g., Video calls).  
+
+### **Where is ATM Used?**  
+- Used in **banks, ISPs, and telecommunication networks** for fast data transfer.  
+
+### **Advantages of ATM:**  
+✔ **Low latency** → Ideal for real-time applications like voice/video.  
+✔ **Reliable and scalable** for large networks.  
+
+### **Disadvantages of ATM:**  
+❌ Complex to implement.  
+❌ Expensive compared to Ethernet.  
+
+---
+
+## **Conclusion**  
+These **Data Link Layer Protocols** help in **efficient and error-free** data transmission.  
+- **Stop & Wait** is simple but slow.  
+- **Sliding Window (Go-Back-N & Selective Repeat)** improves efficiency.  
+- **HDLC, ISDN, and ATM** are used in advanced network systems.  
+
+ 😊
 
