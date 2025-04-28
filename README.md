@@ -715,3 +715,575 @@ USER
 🧑🏻‍🎤
 
 
+# Part 1: What is the Shell Process in Unix?
+
+---
+
+## 1. What is a "Process"?
+
+- A **process** is simply a **program that is running**.
+- When you open a program or command, Unix **creates a process**.
+- Example:  
+  - When you run `vi notes.txt`, the **`vi` editor becomes a process**.
+  - When you run `ls`, **listing files becomes a process**.
+
+---
+
+## 2. What is a "Shell Process"?
+
+- The **shell** itself is also a **program**.  
+- When you open a **Terminal** (command line), the **shell process starts**.
+- This shell waits for your commands.
+
+**Simply:**
+- **Shell** is **a special process** that **takes your commands**, **sends them to Unix**, and **shows you the results**.
+
+---
+
+## 3. How the Shell Process Works (Simple Step-by-Step)
+
+Here’s what happens in simple language:
+
+1. **User opens Terminal** → A **Shell Process starts**.
+2. **User types a command** (like `ls`).
+3. **Shell reads the command**.
+4. **Shell creates a new process** for that command.
+5. **Unix does the job** (like listing files).
+6. **Shell shows the result** on screen.
+7. **Shell waits for the next command.**
+
+---
+
+### Diagram View:
+
+```
+[User types command] 
+       ↓
+[Shell reads command]
+       ↓
+[Shell creates new process to run the command]
+       ↓
+[Command runs and finishes]
+       ↓
+[Shell shows output and waits for next command]
+```
+
+---
+
+## 4. Types of Processes Started by Shell
+
+There are **two types of processes**:
+
+| Type | Explanation | Example |
+|:---|:---|:---|
+| **Foreground process** | Runs directly in front; you wait until it finishes. | Running `vi file.txt` |
+| **Background process** | Runs in the background; you can keep working while it runs. | Running `backup.sh &` |
+
+**Tip:**  
+To run something in the background, you **add `&`** at the end.
+
+Example:
+
+```bash
+./long_task.sh &
+```
+
+---
+
+## 5. Managing Shell Processes
+
+You can control processes:
+
+| Command | Action |
+|:---|:---|
+| `ps` | Show all processes |
+| `jobs` | Show background jobs |
+| `kill PID` | Kill (stop) a process by its PID (Process ID) |
+| `fg` | Bring background job to foreground |
+| `bg` | Send stopped job to background |
+
+**Example:**
+```bash
+ps
+```
+shows a list of running processes.
+
+---
+
+# Part 2: Customizing the Shell Environment
+
+---
+
+## 1. What is the Shell Environment?
+
+- The **Shell Environment** means **settings** that control **how the shell behaves** for you.
+- You can **customize** it to:
+  - Change how your command prompt looks.
+  - Set shortcuts for commands.
+  - Set the default editor (`vi` or `nano`).
+  - Set your favorite directories or paths.
+
+---
+  
+## 2. Environment Variables
+
+- **Environment Variables** are **like settings** stored inside the shell.
+- They control things like:
+  - Where programs are found.
+  - Your username.
+  - Your home directory.
+  - Which editor opens by default.
+
+---
+
+### Some Important Environment Variables:
+
+| Variable | Meaning | Example |
+|:---|:---|:---|
+| `HOME` | Your home directory | `/home/username` |
+| `USER` | Your username | `alex` |
+| `PATH` | Where to look for commands | `/usr/bin:/bin:/usr/local/bin` |
+| `SHELL` | Which shell you are using | `/bin/bash` |
+| `EDITOR` | Default text editor | `vi` or `nano` |
+
+---
+
+## 3. How to See Environment Variables
+
+- To see all environment variables:
+
+```bash
+printenv
+```
+or
+```bash
+env
+```
+
+- To see a specific variable:
+
+```bash
+echo $HOME
+```
+
+It will show your home directory.
+
+---
+
+## 4. How to Set Environment Variables
+
+If you want to **set a new variable** or **change an existing one**, you can do:
+
+```bash
+export VARIABLE_NAME=value
+```
+
+Example:
+
+```bash
+export EDITOR=vi
+```
+This sets your default editor to `vi`.
+
+**Note:**  
+- This change is **temporary** (only for current Terminal session).
+
+---
+
+## 5. Making Changes Permanent
+
+To make environment changes **permanent**, you have to put them inside special files.
+
+For **bash shell**, these files are:
+
+| File | Purpose |
+|:---|:---|
+| `~/.bashrc` | Settings for every new terminal window |
+| `~/.bash_profile` | Settings for login shell (when you log in) |
+
+You can edit `.bashrc` like this:
+
+```bash
+vi ~/.bashrc
+```
+
+And add a line like:
+
+```bash
+export PATH=$PATH:/home/username/myprograms
+```
+
+After saving, apply changes using:
+
+```bash
+source ~/.bashrc
+```
+
+or simply restart the terminal.
+
+---
+
+## 6. Customizing the Shell Prompt (`PS1`)
+
+You can change **how your terminal prompt looks** using the `PS1` variable.
+
+Example:
+
+```bash
+export PS1="[\u@\h \W]$ "
+```
+
+- `\u` = username
+- `\h` = hostname
+- `\W` = current directory
+
+This will show a prompt like:
+
+```
+[alex@server Documents]$
+```
+
+You can make your prompt colorful and stylish!
+
+---
+
+# Final Simple Diagram: Shell Process + Customizing Environment
+
+```
+[User types command]
+         ↓
+[Shell reads and runs the process]
+         ↓
+[Process finishes and shell waits]
+         ↓
+Meanwhile:
+         ↓
+[User customizes environment using variables like PATH, HOME, EDITOR]
+         ↓
+[Customization saved in ~/.bashrc or ~/.bash_profile]
+```
+
+---
+
+# Very Short Summary
+
+| Topic | Key Point |
+|:---|:---|
+| **Shell Process** | Shell reads your command, creates a new process, waits for the result. |
+| **Customizing Shell** | You can set environment variables (like PATH, EDITOR) to control behavior. Changes are saved in files like `.bashrc`. |
+
+---
+
+# Quick Practice Questions for You (Optional)
+
+1. How to view all environment variables?
+2. How to set the default editor to `nano` permanently?
+3. How to see your home directory using a shell command?
+4. How to send a running process to the background?
+
+  
+---
+---
+---
+---
+---
+
+🧑🏻‍🎤
+
+
+
+---
+
+# What is Shell Programming?
+
+---
+
+- **Shell programming** (also called **Shell scripting**) is the **art of writing a group of Unix commands** into a **text file**.
+- Later, you can **run that file** like a small **program**.
+- Instead of typing commands one by one every time, you write all commands in a file and **run the file**.  
+**It saves time and makes work automatic!**
+
+---
+
+# Why Shell Programming is Useful?
+
+- **Automation**: You don't need to manually type 10–20 commands again and again.
+- **Batch Processing**: Do lots of work (copy files, backups, cleanups) with just **one click**.
+- **Simple Programming**: Shell programming is much easier than C, Java, or Python.
+- **System Administration**: All system admins use shell scripts to manage servers.
+
+---
+
+# Example of What Shell Programming Does
+
+Suppose every morning you:
+- Login
+- Check disk space
+- Check memory
+- List today's files
+
+Instead of typing 4 commands every day,  
+**you can write a shell script once, and run it every morning with one command!**
+
+---
+
+# How to Create a Shell Program (Step-by-Step)
+
+---
+
+### Step 1: Open a text editor (like `vi`)
+
+Example:
+
+```bash
+vi myscript.sh
+```
+
+---
+
+### Step 2: Write the script
+
+Inside the file, write:
+
+```bash
+#!/bin/bash
+# This is a simple shell script
+
+echo "Good Morning!"
+date
+df -h
+free -m
+```
+
+**Explanation:**
+- `#!/bin/bash` → Tells Unix this is a bash shell script.
+- `#` → Anything after `#` is a **comment** (just for information; shell ignores it).
+- `echo` → Prints text on screen.
+- `date` → Shows current date and time.
+- `df -h` → Shows disk space (in human-readable format).
+- `free -m` → Shows memory usage (in MB).
+
+---
+
+### Step 3: Save and Exit
+
+- In `vi`, press `Esc`, type `:wq`, and hit Enter.
+
+---
+
+### Step 4: Make the script executable
+
+You must give permission to run the script:
+
+```bash
+chmod +x myscript.sh
+```
+
+---
+
+### Step 5: Run the script
+
+Now you can run it:
+
+```bash
+./myscript.sh
+```
+
+**Output will be:**
+```
+Good Morning!
+Tue Apr 29 09:42:15 IST 2025
+[Disk space info]
+[Memory info]
+```
+
+---
+
+# Important Parts of Shell Programming
+
+---
+
+## 1. Comments
+
+- Use `#` to write comments (notes for humans).
+- Comments are **ignored by the shell** when running the script.
+
+Example:
+
+```bash
+# This script checks the server health
+```
+
+---
+
+## 2. Variables
+
+- You can **store data** in variables.
+
+Example:
+
+```bash
+name="John"
+echo "Hello, $name"
+```
+
+- This will print:
+```
+Hello, John
+```
+
+**Important**: No spaces on both sides of `=` when setting a variable.
+
+---
+
+## 3. Taking Input from User
+
+You can **ask user** to enter something:
+
+Example:
+
+```bash
+echo "Enter your name:"
+read username
+echo "Welcome, $username"
+```
+
+When you run it:
+- It will ask for your name.
+- It will welcome you.
+
+---
+
+## 4. Decision Making (if-else)
+
+You can **make decisions** inside scripts.
+
+Example:
+
+```bash
+echo "Enter a number:"
+read num
+
+if [ $num -gt 10 ]
+then
+    echo "Number is greater than 10."
+else
+    echo "Number is 10 or smaller."
+fi
+```
+
+**Explanation:**
+- `-gt` means "greater than."
+- `[ ... ]` are needed around the condition.
+
+---
+
+## 5. Loops
+
+You can **repeat things** using loops.
+
+**For loop example:**
+
+```bash
+for i in 1 2 3 4 5
+do
+    echo "Number: $i"
+done
+```
+
+**Output:**
+```
+Number: 1
+Number: 2
+Number: 3
+Number: 4
+Number: 5
+```
+
+**While loop example:**
+
+```bash
+count=1
+while [ $count -le 5 ]
+do
+    echo "Count: $count"
+    count=$((count + 1))
+done
+```
+
+This keeps running while `count <= 5`.
+
+---
+
+# Types of Shell Programs (Simple Examples)
+
+---
+
+| Type of Script | What it Does | Example |
+|:---|:---|:---|
+| Startup script | Runs when the system starts | Launch servers, load settings |
+| Backup script | Takes backup of files | Copy important files daily |
+| Monitoring script | Watches system health | Check CPU, memory, disk usage |
+| Automation script | Repeats tasks automatically | Rename files, send emails |
+
+---
+
+# Real-World Mini Example: Backup Script
+
+Suppose you want to copy your "project" folder every day to a backup folder.
+
+Script:
+
+```bash
+#!/bin/bash
+
+cp -r /home/user/project /home/user/backup/project_$(date +%F)
+echo "Backup completed at $(date)"
+```
+
+- `cp -r` → Copy folder.
+- `$(date +%F)` → Current date like `2025-04-29` (nice for naming).
+- `echo` → Print message.
+
+Run this script every evening to **automatically backup your project**!
+
+---
+
+# Final Simple Summary
+
+| Concept | Simple Meaning |
+|:---|:---|
+| **Shell Programming** | Writing many commands into one file to run them together. |
+| **Script File** | A text file (like `myscript.sh`) containing your commands. |
+| **Variables** | Store and reuse values easily. |
+| **If-Else** | Make decisions inside the script. |
+| **Loops** | Repeat actions many times. |
+| **Automation** | Do big work with one small command. |
+
+---
+
+# Tiny Visual Mindmap:
+
+```
+[Shell Programming]
+      |
+      |-- [Create script file]
+      |-- [Write commands]
+      |-- [Use variables, if-else, loops]
+      |-- [Save and make executable]
+      |-- [Run the script]
+      |-- [Automate tasks]
+```
+
+---
+
+---
+---
+---
+---
+---
+
+🧑🏻‍🎤
+
+
+
