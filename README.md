@@ -1287,3 +1287,683 @@ Run this script every evening to **automatically backup your project**!
 
 
 
+
+
+# What is the Unix File System?
+
+---
+
+- The **Unix File System** is **how Unix organizes and stores files and folders** on a disk (like your hard drive or SSD).
+- Think of it like a **big tree** with **branches** (folders/directories) and **leaves** (files).
+- **Everything in Unix is treated like a file** — even things like:
+  - Text files
+  - Programs
+  - Devices (like your keyboard, printer)
+
+**So in Unix, EVERYTHING is a file!**
+
+---
+
+# Important Characteristics of Unix File System
+
+---
+
+- Organized like a **tree** with **root at the top** (`/`).
+- Files and folders are arranged **in levels** (like a family tree).
+- Each file has:
+  - A **name**
+  - A **location (path)**
+  - **Permissions** (who can read/write/execute it)
+- Special directories have special meanings.
+- Files can be:
+  - Normal files (text, programs, images)
+  - Directories (folders)
+  - Device files (to control hardware)
+
+---
+
+# Structure of Unix File System
+
+---
+
+The Unix file system is like this:
+
+```
+/
+├── bin
+├── boot
+├── dev
+├── etc
+├── home
+│   ├── user1
+│   └── user2
+├── lib
+├── media
+├── tmp
+├── usr
+│   ├── bin
+│   └── lib
+└── var
+```
+
+**Explanation:**
+
+| Folder | Meaning |
+|:---|:---|
+| `/` | Root (the top-most directory) |
+| `/bin` | Essential programs (commands like `ls`, `cp`, `mv`) |
+| `/boot` | Files needed to start (boot) the computer |
+| `/dev` | Files that represent devices (disk, printer) |
+| `/etc` | Configuration files (settings) |
+| `/home` | Home folders for all users |
+| `/lib` | Essential system libraries (help programs run) |
+| `/media` | Temporary mount points for external devices (USBs) |
+| `/tmp` | Temporary files (automatically deleted later) |
+| `/usr` | User programs and files |
+| `/var` | Variable data like logs, emails |
+
+---
+
+# Important Directories (explained simply)
+
+---
+
+### `/`
+- Root folder.  
+- Everything starts from here.
+
+### `/bin`
+- **Binary files** (ready-to-run programs) like:
+  - `ls` (list files)
+  - `cat` (display file contents)
+
+### `/home`
+- This is **where your personal files live**.
+- Example:
+  - `/home/alex/Documents`
+  - `/home/john/Pictures`
+
+Each user has a **separate folder** inside `/home`.
+
+### `/etc`
+- Contains **configuration files** for:
+  - Network
+  - Users
+  - Programs
+- For example, system settings files like `/etc/passwd`.
+
+### `/dev`
+- Special files for devices.
+- Example:
+  - `/dev/sda1` → Your hard drive.
+  - `/dev/usb1` → Your USB drive.
+
+### `/tmp`
+- Temporary files.
+- Programs put short-term files here.
+- Files here are deleted after a reboot.
+
+---
+
+# How Paths Work in Unix File System
+
+---
+
+There are two types of **Paths**:
+
+| Path Type | Example | Meaning |
+|:---|:---|:---|
+| **Absolute Path** | `/home/alex/file.txt` | Full path from root `/` |
+| **Relative Path** | `Documents/file.txt` | Path from where you are now |
+
+**Absolute Path** always starts with `/`.  
+**Relative Path** depends on your **current directory**.
+
+---
+
+# Types of Files in Unix
+
+---
+
+In Unix, **everything is a file**, but there are different types:
+
+| File Type | Meaning | Example |
+|:---|:---|:---|
+| **Regular file** | Text, programs, images | `/home/alex/note.txt` |
+| **Directory** | A folder (contains files) | `/home/alex/` |
+| **Device file** | Represents hardware | `/dev/sda1` |
+| **Link** | Shortcut to another file | `/home/alex/shortcut_to_note` |
+| **Socket** | Special file for communication | Used in networking |
+| **Pipe** | Connects output of one program to input of another | `|` symbol usage |
+
+---
+
+# Important Commands to Work with Files and Directories
+
+---
+
+| Command | What it does | Example |
+|:---|:---|:---|
+| `ls` | List files and directories | `ls /home/alex` |
+| `cd` | Change directory | `cd /home/alex/Documents` |
+| `pwd` | Show current location (path) | `pwd` |
+| `mkdir` | Make a new directory | `mkdir newfolder` |
+| `rmdir` | Remove a directory | `rmdir emptyfolder` |
+| `rm` | Remove files or directories | `rm file.txt` |
+| `cp` | Copy files | `cp file1.txt file2.txt` |
+| `mv` | Move or rename files | `mv oldname.txt newname.txt` |
+
+---
+
+# How File Permissions Work
+
+---
+
+Each file/folder has **permissions** for:
+
+- **Owner** (the person who created the file)
+- **Group** (a team of users)
+- **Others** (everyone else)
+
+**Permissions types:**
+- `r` → Read
+- `w` → Write (edit)
+- `x` → Execute (run)
+
+Example:
+
+```bash
+-rwxr-xr--
+```
+means:
+- Owner can read, write, and execute.
+- Group can read and execute.
+- Others can only read.
+
+**Command to see permissions:**
+
+```bash
+ls -l
+```
+
+**Command to change permissions:**
+
+```bash
+chmod 755 file.txt
+```
+
+---
+
+# Small Visual Diagram of Unix File System
+
+```
+/
+├── bin/ (commands)
+├── etc/ (settings)
+├── home/ (your files)
+│    ├── alex/
+│    └── john/
+├── dev/ (devices)
+├── tmp/ (temporary files)
+├── usr/ (user programs)
+└── var/ (logs, emails)
+```
+
+---
+
+# Simple Summary Table
+
+| Concept | Meaning |
+|:---|:---|
+| **Everything is a file** | Even hardware is shown as a file. |
+| **Root `/`** | The starting point of all files and folders. |
+| **Home `/home/user`** | Your personal files and folders are stored here. |
+| **Important folders** | `/bin`, `/etc`, `/dev`, `/tmp`, `/usr`, `/var` |
+| **File permissions** | Control who can read/write/run a file. |
+
+---
+
+# Final Easy Words:
+
+- The **Unix File System** is **like a tree** starting from **root `/`**.
+- It **organizes everything neatly** — files, programs, devices.
+- **You move inside it** using commands like `cd`, `ls`, and `pwd`.
+- **Permissions** decide **who can access files**.
+
+---
+---
+---
+---
+---
+---
+
+🧑🏻‍🎤
+
+
+
+# What are Unix Commands?
+
+---
+
+- **Unix commands** are **small instructions** you type in the **terminal** to tell the computer **what you want it to do**.
+- For example:  
+  - Show files
+  - Copy files
+  - Move folders
+  - Check system information
+  - Manage users, and much more.
+
+**In short:**  
+> Unix commands are **your way of talking to the Unix system**.
+
+---
+
+# Basic Unix Commands (with easy explanations)
+
+---
+
+Here’s a list of **very important and basic commands**:
+
+| Command | Meaning | Example |
+|:---|:---|:---|
+| `pwd` | Show your current location (path) | `pwd` |
+| `ls` | List files and folders | `ls` |
+| `cd` | Change directory (move to a folder) | `cd Documents` |
+| `mkdir` | Make a new folder (directory) | `mkdir myfolder` |
+| `rmdir` | Remove an empty folder | `rmdir myfolder` |
+| `rm` | Remove (delete) files or folders | `rm file.txt` |
+| `cp` | Copy files or folders | `cp file1.txt file2.txt` |
+| `mv` | Move or rename files or folders | `mv file.txt Documents/` |
+| `cat` | Show contents of a file | `cat file.txt` |
+| `more` | View long files page by page | `more file.txt` |
+| `touch` | Create an empty file | `touch myfile.txt` |
+| `echo` | Print a message on the screen | `echo "Hello World"` |
+| `whoami` | Show your username | `whoami` |
+| `date` | Show current date and time | `date` |
+| `cal` | Show calendar | `cal` |
+| `clear` | Clear the terminal screen | `clear` |
+
+---
+
+# Simple Example
+
+Suppose you open a terminal and type:
+
+```bash
+pwd
+```
+Output:
+```
+/home/alex/Documents
+```
+(Shows you are inside `/home/alex/Documents` folder.)
+
+Now, if you type:
+
+```bash
+ls
+```
+It will list all files and folders in the Documents directory.
+
+---
+
+# What are Attributes in Unix?
+
+---
+
+- **Attributes** describe **special properties** of a file or folder.
+- They decide:
+  - **Who can read** the file
+  - **Who can write** (change) the file
+  - **Who can execute** (run) the file
+
+**Example attributes are:**
+- **Permissions** (`r`, `w`, `x`)
+- **Ownership** (who owns the file)
+- **File size**
+- **Creation/Modification date**
+
+---
+
+# How to View File Attributes
+
+You can see the attributes using the command:
+
+```bash
+ls -l
+```
+
+Example output:
+
+```
+-rw-r--r-- 1 alex users  4096 Apr 29 10:30 notes.txt
+```
+
+**Let’s break this down:**
+
+| Part | Meaning |
+|:---|:---|
+| `-rw-r--r--` | File permissions |
+| `1` | Number of links (not very important now) |
+| `alex` | Owner (who created the file) |
+| `users` | Group (which group the owner belongs to) |
+| `4096` | Size of file in bytes |
+| `Apr 29 10:30` | Last modification date and time |
+| `notes.txt` | File name |
+
+---
+
+# Understanding File Permissions Simply
+
+Permissions look like this:
+
+```
+-rwxr-xr--
+```
+
+Meaning:
+
+| Who | Permissions | Meaning |
+|:---|:---|:---|
+| **Owner** | `rwx` | Owner can **read**, **write**, and **execute** |
+| **Group** | `r-x` | Group can **read** and **execute** |
+| **Others** | `r--` | Others can only **read** |
+
+**Legend:**
+- `r` → Read
+- `w` → Write (modify)
+- `x` → Execute (run)
+
+---
+
+# How to Change Permissions and Ownership
+
+---
+
+## To change permissions:
+
+```bash
+chmod 755 myfile.txt
+```
+- `7` = `rwx` (read, write, execute for owner)
+- `5` = `r-x` (read, execute for group)
+- `5` = `r-x` (read, execute for others)
+
+## To change ownership:
+
+```bash
+chown newowner myfile.txt
+```
+
+Changes the owner of the file.
+
+---
+
+# Special Important Commands for Files
+
+---
+
+| Command | Meaning |
+|:---|:---|
+| `stat file.txt` | Shows full details (size, modified date, permissions) |
+| `file file.txt` | Shows type of file (text, image, etc.) |
+| `find /home/alex -name notes.txt` | Find a file inside a folder |
+
+---
+
+# Very Quick Example Session
+
+You open your terminal and do:
+
+```bash
+pwd
+```
+→ Shows your location.
+
+```bash
+mkdir newfolder
+```
+→ Creates a new folder.
+
+```bash
+cd newfolder
+```
+→ Move into the new folder.
+
+```bash
+touch hello.txt
+```
+→ Create an empty file.
+
+```bash
+ls -l
+```
+→ See the file’s attributes (permissions, owner, size).
+
+---
+
+# Simple Visual of a Unix Terminal Session
+
+```
+$ pwd
+/home/alex
+
+$ mkdir project
+
+$ cd project
+
+$ touch notes.txt
+
+$ ls -l
+-rw-r--r-- 1 alex users 0 Apr 29 10:45 notes.txt
+```
+
+---
+
+# Summary Table (for Quick Revision)
+
+| Topic | Simple Explanation |
+|:---|:---|
+| **Unix Command** | An instruction you type to tell Unix what to do. |
+| **File Attribute** | Information about the file (like permissions, owner, size). |
+| **Permission** | Who can read/write/execute the file. |
+| **Owner** | Person who created the file. |
+| **ls -l** | Command to see file attributes. |
+| **chmod** | Change permissions. |
+| **chown** | Change owner of file. |
+
+---
+
+# Final Simple Words:
+
+- **Unix Commands** help you **control the computer** easily.
+- **Attributes** help **protect your files** and **control access**.
+- **Learn basic commands** first — they are used every day!
+
+---
+
+---
+---
+---
+---
+---
+
+🧑🏻‍🎤
+
+
+
+# What is Unix?
+
+---
+
+- **Unix** is an **operating system** that manages the hardware of your computer and provides an environment to run programs and applications.
+- It's **multi-user**, meaning **multiple people** can use it at the same time (in different sessions).
+- **Unix** was created in **1969** by **Ken Thompson**, **Dennis Ritchie**, and others at **AT&T Bell Labs**.
+- Today, **Unix-like operating systems** such as **Linux** and **macOS** are widely used.
+
+---
+
+# Why is Unix Special?
+
+---
+
+1. **Multitasking**:  
+   - Unix allows you to run **multiple tasks (programs)** at the same time.  
+   - For example, you can browse the internet, write a document, and play music **all at once**.
+
+2. **Multi-user**:  
+   - **Multiple users** can log into the system and work independently at the same time.
+   - Each user has their own **files**, **settings**, and **permissions**.
+
+3. **Security**:  
+   - Unix has a strong system of **permissions** that controls who can access and modify files.
+   - Users can be restricted from accessing each other's data or system settings.
+
+4. **Portability**:  
+   - Unix can run on many types of computers, from small devices to supercomputers.  
+   - This is because it is designed to be **portable** and can be easily adapted to different hardware.
+
+---
+
+# Basic Structure of Unix
+
+---
+
+Unix has a **simple and efficient structure** that helps organize data and manage tasks. It works like a **tree** where everything is connected.
+
+### The Unix file system looks like this:
+
+```
+/
+├── bin/
+├── etc/
+├── home/
+├── usr/
+├── var/
+├── dev/
+├── tmp/
+```
+
+### What do these folders mean?
+
+| Folder | What it Contains |
+|:---|:---|
+| `/` | The **root directory** (top-most level). All other files are beneath it. |
+| `/bin` | Essential system programs (like `ls`, `cp`, `mv`). |
+| `/etc` | Configuration files that control system settings. |
+| `/home` | User directories (for personal files). |
+| `/usr` | User programs and software. |
+| `/var` | Files that change frequently (logs, databases). |
+| `/dev` | Device files (represent physical devices like hard drives). |
+| `/tmp` | Temporary files used by programs. |
+
+---
+
+# Key Features of Unix
+
+---
+
+1. **Command Line Interface (CLI)**:  
+   - The **Unix shell** is a command-line interface where users type commands to perform tasks.
+   - Example commands: `ls` to list files, `cd` to change directories.
+
+2. **Shell**:  
+   - The **Shell** is the program that interprets the commands you type and **communicates** with the kernel (the core of the operating system).
+   - The **Bash shell** is the most common shell used today in Unix-like systems (like Linux and macOS).
+
+3. **File System**:  
+   - In Unix, **everything is a file**, whether it's a **text file**, a **program**, or even a **device**.
+   - Files are organized in a **hierarchical structure**, meaning folders can have other folders or files inside them.
+
+4. **Processes**:  
+   - A **process** is a program that is running on your system.  
+   - Unix allows you to run multiple processes at the same time and control them using commands like `ps` (to see running processes) and `kill` (to stop a process).
+
+5. **Networking**:  
+   - Unix supports **networking** features, allowing it to connect to other computers over the internet or local network.
+   - You can easily **transfer files**, **share resources**, and even **remote login** to other systems using commands like `ssh` (Secure Shell).
+
+---
+
+# Unix Command Structure
+
+---
+
+Unix commands follow a simple pattern:  
+```
+command [options] [arguments]
+```
+
+Example:
+- `ls -l /home/alex`  
+  - **`ls`**: Command to list files
+  - **`-l`**: Option to show detailed information (like size, permissions)
+  - **`/home/alex`**: Argument specifying the folder to look into
+
+---
+
+# What is the Kernel?
+
+---
+
+The **kernel** is the **heart** of the Unix operating system. It:
+- Manages the **hardware** (like CPU, memory, devices).
+- Controls **resources** (disk space, RAM, etc.).
+- **Communicates** between software (programs) and hardware.
+
+When you run a program, the shell talks to the kernel, which makes sure that the **right resources** are used to run that program.
+
+---
+
+# Who Uses Unix?
+
+---
+
+Unix is used by many types of organizations, especially:
+- **Servers**: Unix is commonly used on servers, handling thousands of requests every second.
+- **Developers**: Programmers use Unix-based systems (like Linux or macOS) for coding, testing, and deploying software.
+- **Scientists/Engineers**: Unix is also popular in fields like **science** and **engineering** due to its power and flexibility.
+
+---
+
+# Basic Commands to Get Started
+
+Here are some of the **most basic commands** that every Unix user should know:
+
+| Command | Meaning | Example |
+|:---|:---|:---|
+| `pwd` | Show your current directory | `pwd` |
+| `ls` | List the contents of the current directory | `ls` |
+| `cd` | Change directory (move to a folder) | `cd Documents` |
+| `cp` | Copy files or directories | `cp file1.txt file2.txt` |
+| `mv` | Move or rename files | `mv oldname.txt newname.txt` |
+| `rm` | Remove files or directories | `rm file.txt` |
+| `touch` | Create a new empty file | `touch newfile.txt` |
+| `cat` | Display the contents of a file | `cat file.txt` |
+
+---
+
+# Summary of Key Points
+
+| Concept | Simple Explanation |
+|:---|:---|
+| **Unix** | A powerful operating system used for managing computers. |
+| **Multi-user** | Many users can work on Unix at the same time. |
+| **Multi-tasking** | Run multiple programs at once. |
+| **Security** | Strong system to protect files and data. |
+| **Portability** | Unix can run on many different types of computers. |
+| **Kernel** | The core part of Unix that manages the system. |
+| **Shell** | The program that lets you interact with the operating system using commands. |
+
+---
+
+# Final Easy Words:
+
+- **Unix** is an **operating system** used to manage computers and run programs.
+- It’s powerful, **multi-user**, and **multi-tasking**.
+- Unix is commonly used on **servers**, by **programmers**, and in **engineering** fields.
+- You interact with Unix through the **command line** using simple commands.
+
+---
+
+
