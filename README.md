@@ -600,5 +600,118 @@ Suppose you are working on a server:
 
 This is how Unix/Linux admins work every day!
 
+
 ---
+
+# Visual Diagram: **User → Shell → OS → Files (`vi` editor too)**
+
+```
++------------------------------------------------+
+|                   USER                         |
+| (You typing commands on keyboard)              |
++------------------------------------------------+
+                     |
+                     v
++------------------------------------------------+
+|                   SHELL                        |
+| (Reads your commands, passes to OS, shows output) |
++------------------------------------------------+
+                     |
+                     v
++------------------------------------------------+
+|           UNIX OPERATING SYSTEM (OS)           |
+| (The heart of the computer: manages hardware, files) |
++------------------------------------------------+
+                     |
+                     v
++------------------------------------------------+
+|                 FILE SYSTEM                    |
+| (Where your text files, programs, folders are stored) |
++------------------------------------------------+
+```
+
+---
+
+# Where Does `vi` Fit In?
+
+**`vi` is a program that you run through the Shell.**  
+It helps you **edit files** in the **File System**.
+
+### So:
+
+1. You **type** `vi file.txt` in the Shell.
+2. The **Shell** starts the `vi` editor program.
+3. `vi` allows you to **create/edit/save** text files.
+4. Files are stored in the **File System**.
+
+**Flow when using `vi`:**
+
+```
+You → Shell → Start vi → Edit File → Save to File System
+```
+
+---
+
+# Full Example (Real Life Steps)
+
+Let's say you want to write a note on your server:
+
+1. **You open Terminal** (Shell starts automatically).
+2. You type:
+   ```bash
+   vi notes.txt
+   ```
+   (Shell starts the `vi` editor)
+
+3. Inside `vi`:
+   - Press `i` to insert.
+   - Write:
+     ```
+     Meeting at 5 PM today
+     ```
+   - Press `Esc`, then type `:wq` to save and quit.
+
+4. Now your file **notes.txt** is saved in your system.
+
+**Everything done with simple commands!**
+
+---
+
+# Simple Mind Map
+
+Here’s a mind map view for even quicker memory:
+
+```
+USER
+  |
+  |---> Shell
+         |
+         |---> Runs commands like:
+               |--> vi (edit files)
+               |--> ls (list files)
+               |--> cd (move directories)
+         |
+         |---> Sends work to OS
+                  |
+                  |---> Manages Files, Hardware, System
+```
+
+---
+
+# Final Words:
+
+- **Shell**: Your messenger — tells Unix what you want.
+- **`vi` editor**: Special tool for editing text files — called from Shell.
+- **Unix OS**: The brain that actually does the hard work.
+- **Files/Folders**: What you create, edit, manage.
+
+---
+  ---
+---
+----
+---
+---
+
+🧑🏻‍🎤
+
 
