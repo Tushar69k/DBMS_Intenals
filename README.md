@@ -128,3 +128,75 @@ x - \bar{x} \text{ (difference)}, \quad (x - \bar{x})^2
 If you want, I can **also show a quick Python code** to calculate all four measures instantly for any dataset.
 
 Do you want me to do that?
+
+
+Here’s a clear, easy-to-understand explanation:
+
+---
+
+## **1. Difference between Errors and Artefacts in Data Cleaning**
+
+| **Aspect**            | **Errors**                                                         | **Artefacts**                                                                                                |
+| --------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| **Definition**        | Mistakes in data that are **incorrect values** or inconsistencies. | Patterns or anomalies in data that are **not real**, often caused by data collection or measurement process. |
+| **Example**           | A person’s age recorded as 250 years, or “M” instead of “Male”.    | Noise in a sensor reading, e.g., extra spikes in temperature due to faulty equipment.                        |
+| **Cause**             | Human error, data entry mistakes, system bugs.                     | Instrument limitations, environmental factors, or measurement errors.                                        |
+| **Focus in cleaning** | Correct or remove wrong values.                                    | Detect and remove spurious patterns that don’t reflect reality.                                              |
+
+✅ **In short:**
+
+* **Errors** = incorrect values.
+* **Artefacts** = misleading patterns caused by measurement or process, not actual errors in data.
+
+---
+
+## **2. Two Imputation Techniques**
+
+When data is **missing**, we often use imputation to fill it with reasonable values.
+
+### **a) Mean/Median Imputation**
+
+* **Idea:** Replace missing values with the **mean or median** of the available data for that feature.
+* **Example:**
+
+Dataset: 5, 7, NA, 8, 6
+
+* Mean = (5+7+8+6)/4 = 6.5
+* Replace NA with 6.5 → 5, 7, **6.5**, 8, 6
+
+✅ **Pros:** Simple, fast
+⚠️ **Cons:** Can reduce variability and affect distribution
+
+**Tip:** Use **median** if data is skewed or has outliers.
+
+---
+
+### **b) k-Nearest Neighbors (KNN) Imputation**
+
+* **Idea:** Fill missing values using the **values from the most similar data points** (neighbors).
+
+* **Steps:**
+
+  1. Identify rows with missing values.
+  2. Find `k` nearest rows based on other features.
+  3. Replace missing value with **average (numerical)** or **mode (categorical)** of neighbors.
+
+* **Example:** Missing weight for person A → take average weight of 3 closest people in height, age, etc.
+
+✅ **Pros:** Considers correlation between features, more accurate than mean/median
+⚠️ **Cons:** Slower for large datasets
+
+---
+
+**Summary:**
+
+| Imputation Technique | When to Use                                  |
+| -------------------- | -------------------------------------------- |
+| Mean/Median          | Small datasets, simple, numerical features   |
+| KNN                  | Large datasets, when features are correlated |
+
+---
+
+If you want, I can also make a **super simple diagram showing Errors vs Artefacts and imputation methods** so it’s easier to remember for exams.
+
+Do you want me to make that diagram?
